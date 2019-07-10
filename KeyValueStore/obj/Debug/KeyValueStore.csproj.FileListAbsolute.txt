@@ -8,3 +8,13 @@ C:\Users\jonas\source\repos\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.
 C:\Users\jonas\source\repos\KeyValueStore\KeyValueStore\bin\Debug\Newtonsoft.Json.dll
 C:\Users\jonas\source\repos\KeyValueStore\KeyValueStore\bin\Debug\Newtonsoft.Json.xml
 C:\Users\jonas\source\repos\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.csproj.CopyComplete
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Debug\KeyValueStore.exe.config
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Debug\KeyValueStore.exe
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Debug\KeyValueStore.pdb
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Debug\Newtonsoft.Json.dll
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Debug\Newtonsoft.Json.xml
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.csprojAssemblyReference.cache
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.csproj.CoreCompileInputs.cache
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.csproj.CopyComplete
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.exe
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Debug\KeyValueStore.pdb

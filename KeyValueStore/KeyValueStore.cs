@@ -17,21 +17,38 @@ namespace KeyValueStore
 
     public class KeyValueStore : IKeyValueStore
     {
+        private const string DbName = "KeyValue.db";
+        private const string DbIndexName = "KeyValue.dbindex";
         private readonly FileStream dbFileStream;
         private readonly FileStream indexFileStream;
         private readonly bool usingCustomSerializer;
         private readonly ISerializer serializer;
-        public KeyValueStore(string databasePath = null, bool shouldFlush = false, ISerializer serializer = null)
+        private readonly string tempPath;
+
+        public KeyValueStore(string databasePath = null, bool shouldFlush = false, bool shouldUseTemp = false, ISerializer serializer = null)
         {
             if (string.IsNullOrEmpty(databasePath)) databasePath = "./";
-            this.dbFileStream = new FileStream($"{databasePath}KeyValue.db", shouldFlush ? FileMode.Create : FileMode.OpenOrCreate);
-            this.indexFileStream = new FileStream($"{databasePath}KeyValue.dbindex", shouldFlush ? FileMode.Create : FileMode.OpenOrCreate);
+            if (shouldUseTemp) tempPath = databasePath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+
+            this.dbFileStream = new FileStream($"{databasePath}{DbName}", shouldFlush ? FileMode.Create : FileMode.OpenOrCreate);
+            this.indexFileStream = new FileStream($"{databasePath}{DbIndexName}", shouldFlush ? FileMode.Create : FileMode.OpenOrCreate);
 
             if (serializer != null)
             {
                 usingCustomSerializer = true;
                 this.serializer = serializer;
             }
+        }
+
+        ~KeyValueStore()
+        {
+			dbFileStream?.Dispose();
+            indexFileStream?.Dispose();
+			
+            if (string.IsNullOrEmpty(tempPath)) return;
+            
+            File.Delete($"{tempPath}{DbName}");
+            File.Delete($"{tempPath}{DbIndexName}");
         }
 
         public void Store<T>(string identifier, T value) => StoreAsync(identifier, value).Wait();

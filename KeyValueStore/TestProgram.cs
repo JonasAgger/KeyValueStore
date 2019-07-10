@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace KeyValueStore
 {
@@ -17,7 +13,7 @@ namespace KeyValueStore
             //IKeyValueStore store = new KeyValueStore();
             //IKeyValueStore store = new KeyValueStore("../../SomeFolder/");
             //IKeyValueStore store = new KeyValueStore("../../SomeFolder/", true);
-            IKeyValueStore store = new KeyValueStore(shouldFlush: true);
+            IKeyValueStore store = new KeyValueStore(shouldUseTemp: true);
 
             var exercise1 = new Exercise()
             {
@@ -26,39 +22,15 @@ namespace KeyValueStore
                 Rpe = 12,
                 MuscleGroups = MuscleGroups.Chest
             };
-            
-            var exercise2 = new Exercise()
-            {
-                ExerciseName = "Squat",
-                Reps = 8,
-                Rpe = 11,
-                MuscleGroups = MuscleGroups.NotLegs
-            };
 
-            var exercise3 = new Exercise()
-            {
-                ExerciseName = "Dedlift",
-                Reps = 8,
-                Rpe = 11,
-                MuscleGroups = MuscleGroups.ArmsButBetter
-            };
+            store.Store("Ex", exercise1);
+            var ex = store.Fetch<Exercise>("Ex");
 
-            var stopWatch = new Stopwatch();
-
-            stopWatch.Start();
-            for (int i = 0; i < 10000; i++)
-            {
-                store.Store($"Exercise{i}", exercise1);
-            }
-
-            Console.WriteLine(stopWatch.ElapsedMilliseconds);
-
-            stopWatch.Restart();
-            var ex = store.Fetch<Exercise>("Exercise8423");
-            stopWatch.Stop();
-            Console.WriteLine(stopWatch.ElapsedMilliseconds);
+            Console.WriteLine(ex == null ? "isnull" : "nonull");
+            Console.ReadLine();
         }
     }
+
 
     public class TrainingDay
     {
