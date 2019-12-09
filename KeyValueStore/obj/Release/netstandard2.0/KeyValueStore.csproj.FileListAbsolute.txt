@@ -1,0 +1,8 @@
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Release\netstandard2.0\KeyValueStore.deps.json
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Release\netstandard2.0\KeyValueStore.dll
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\bin\Release\netstandard2.0\KeyValueStore.pdb
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Release\netstandard2.0\KeyValueStore.csprojAssemblyReference.cache
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Release\netstandard2.0\KeyValueStore.AssemblyInfoInputs.cache
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Release\netstandard2.0\KeyValueStore.AssemblyInfo.cs
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Release\netstandard2.0\KeyValueStore.dll
+C:\Users\jonas\Desktop\KeyValueStore\KeyValueStore\obj\Release\netstandard2.0\KeyValueStore.pdb

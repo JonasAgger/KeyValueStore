@@ -5,16 +5,10 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using KeyValueStore.Serializers;
 
 namespace KeyValueStore
 {
-    public interface ISerializer
-    {
-        byte[] Serialize<T>(T value);
-        T Deserialize<T>(byte[] bytes);
-    }
-
     public class KeyValueStore : IKeyValueStore
     {
         private const string DbName = "KeyValue.db";
@@ -22,7 +16,7 @@ namespace KeyValueStore
         private readonly FileStream dbFileStream;
         private readonly FileStream indexFileStream;
         private readonly bool usingCustomSerializer;
-        private readonly ISerializer serializer;
+        private readonly ISerializer serializer = new JSonSerializer();
         private readonly string tempPath;
 
         public KeyValueStore(string databasePath = null, bool shouldFlush = false, bool shouldUseTemp = false, ISerializer serializer = null)
@@ -163,9 +157,7 @@ namespace KeyValueStore
 
         private byte[] ObjectToByteArray<T>(T obj)
         {
-            if (usingCustomSerializer)
-                return obj == null ? null : serializer.Serialize(obj);
-            return obj == null ? null : Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(obj));
+            return obj == null ? null : serializer.Serialize(obj);
         }
 
         private T ByteArrayToObj<T>(byte[] data)
@@ -173,10 +165,7 @@ namespace KeyValueStore
             if (data == null || data.Length == 0)
                 return default(T);
 
-            if (usingCustomSerializer) return serializer.Deserialize<T>(data);
-
-            var stringData = Encoding.UTF8.GetString(data);
-            return JsonConvert.DeserializeObject<T>(stringData);
+            return serializer.Deserialize<T>(data);
         }
 
         #endregion
